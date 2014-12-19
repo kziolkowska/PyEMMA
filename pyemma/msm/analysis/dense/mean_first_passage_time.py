@@ -40,4 +40,10 @@ def mfpt(T, target):
     return m_t
 
 
+def mfpt_sets( T, origin, target, mu ):
+    nuA = mu[origin]
+    muA = nuA / np.sum( nuA )
+    tB = mfpt( T, target )
+    tAB = np.dot( muA, tB[origin] )
+    return tAB
     
