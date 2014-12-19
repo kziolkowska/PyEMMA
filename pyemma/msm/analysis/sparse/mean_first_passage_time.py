@@ -47,3 +47,9 @@ def mfpt(T, target):
     m_t=spsolve(A, b)
     return m_t
 
+def mfpt_sets( T, origin, target, mu ):
+    nuA = mu[origin]
+    muA = nuA / np.sum( nuA )
+    tB = mfpt_sparse( T, target )
+    tAB = tB[origin].transpose().dot( muA )
+    return tAB
