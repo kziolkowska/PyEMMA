@@ -52,6 +52,7 @@ __all__=['is_transition_matrix',
          'expected_counts',
          'expected_counts_stationary',
          'mfpt',
+         'mfpt_sets',
          'committor',
          'pcca',
          'expectation',
@@ -666,6 +667,15 @@ def mfpt(T, target):
         return sparse.mean_first_passage_time.mfpt(T, target)
     elif isdense(T):
         return dense.mean_first_passage_time.mfpt(T, target)
+    else:
+        raise _type_not_supported
+
+
+def mfpt_sets( T, origin, target, mu ):
+    if issparse( T ):
+        return sparse.mean_first_passage_time.mfpt_sets( T, origin, target, mu )
+    elif isdense( T ):
+        return dense.mean_first_passage_time.mfpt_sets( T, origin, target, mu )
     else:
         raise _type_not_supported
 
